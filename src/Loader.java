@@ -1,3 +1,5 @@
+import Annotations.start;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -19,7 +21,7 @@ public class Loader {
         URLClassLoader cl = URLClassLoader.newInstance(urls);
 
         // runs and finds all classes that are found
-        // TODO: do something with the classes (use annotations to find the start class of this jar)
+        // TODO: do something with the classes (use annotations to find the Annotations.start class of this jar)
         List<Class> classes = new ArrayList<>();
         while (e.hasMoreElements()) {
             JarEntry je = e.nextElement();
