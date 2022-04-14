@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Arrays;
 
 public class TestComponent {
 
@@ -11,5 +12,6 @@ public class TestComponent {
         Component component1 = new Component("testComp",null,URLClassLoader.newInstance(new URL[]{}));
         System.out.println(component1);
     }
+
 
 }

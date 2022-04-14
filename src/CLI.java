@@ -27,7 +27,7 @@ public class CLI {
         }
         Command command;
         switch (commandoString){
-            case "quit":
+            case "shutdown":
                 command = new StopCommand();
                 break;
             case "start":
@@ -58,8 +58,9 @@ public class CLI {
 
     public List<String> splitCommand(String input){
         List<String> stringList;
-        if (input.contains("-c")){
-            stringList = Arrays.asList(input.split("-c "));
+
+        if (input.contains(" ")){
+            stringList = Arrays.asList(input.split(" "));
         }else {
             stringList = new ArrayList<>();
             stringList.add(input);
