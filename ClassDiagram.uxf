@@ -198,12 +198,12 @@
       <h>120</h>
     </coordinates>
     <panel_attributes>Commands:
-quit
-add
-remove
-start (Comp)
-stop (Comp)
-status</panel_attributes>
+quit 
+add 
+remove 
+start (Comp) 
+stop (Comp) 
+status </panel_attributes>
     <additional_attributes/>
   </element>
   <element>

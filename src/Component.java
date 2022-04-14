@@ -1,4 +1,5 @@
 import java.net.URLClassLoader;
+import java.util.Arrays;
 
 public class Component {
     public static int IDTOTAL = 0;
@@ -42,8 +43,10 @@ public class Component {
     }
 
     public String toString() {
+        String resUrlCL ="URLs:"+ Arrays.toString(urlClassLoader.getURLs());
         StringBuilder result = new StringBuilder();
-        result.append("name=").append(name).append(" ,klasse=").append(klasse).append(" ,zustand=").append(zustand).append(" ,URLClassLoader=").append(urlClassLoader);
+        result.append("name=").append(name).append(" ,klasse=").append(klasse).append(" ,zustand=")
+                .append(zustand).append(" ,URLClassLoader=").append(resUrlCL);
         return result.toString();
     }
 

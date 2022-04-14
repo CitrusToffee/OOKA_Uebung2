@@ -8,6 +8,7 @@ public class CLI {
     private Scanner in;
     public CLI(Scanner in){
         this.in=in;
+        actions = new ArrayList<>();
     }
 
     public void readCL(){
@@ -34,6 +35,18 @@ public class CLI {
                 break;
             case "add":
                 command = new AddCompCommand(commandArgs);
+                break;
+            case "stop":
+                command = new StopCompCommand(commandArgs);
+                break;
+            case "remove":
+                command = new RemoveCompCommand(commandArgs);
+                break;
+            case "status":
+                command = new StatusCommand();
+                break;
+            case "help":
+                command= new HelpCommand();
                 break;
             default:
                 command = new UnknownCommand(input);
