@@ -1,19 +1,30 @@
+import java.util.Scanner;
+
 public class StartDing {
+
+    private static boolean running = true;
 
     public static void main(String[] args) {
         System.out.println("Run Java Run!!");
-        boolean running = true;
+        Scanner in = new Scanner(System.in);
+        CLI cli = new CLI(in);
         while(running){
             // listen for CLI
+            if (in.hasNextLine()){
+                cli.readCL();
+            }
 
-            // change running to false if the stop LZU Command is received
-
-            // if running is false then break;
-
+            if (!running){
+                break;
+            }
             // run components
 
         }
 
+    }
+
+    public static void setRunning(boolean bool){
+        running=bool;
     }
 
 }
