@@ -1,6 +1,8 @@
+package org.hbrs.ooka.commands;
+
 import java.util.List;
 
-public class AddCompCommand implements Command{
+public class AddCompCommand implements Command {
     private List<String> componantNames;
 
     public AddCompCommand(List<String> componantNames){

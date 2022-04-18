@@ -9,7 +9,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>StartDing</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.StartDing</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -20,7 +20,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>CLI</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.CLI</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -31,7 +31,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>/Command/
+    <panel_attributes>/org.hbrs.ooka.commands.Command/
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -43,7 +43,7 @@
       <w>140</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>StartCompCommand</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.commands.StartCompCommand</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -109,7 +109,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Component</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.Component</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -120,7 +120,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Loader</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.Loader</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -131,7 +131,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>CLager</panel_attributes>
+    <panel_attributes>org.hbrs.ooka.CLager</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

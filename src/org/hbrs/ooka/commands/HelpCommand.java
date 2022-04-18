@@ -1,4 +1,6 @@
-public class HelpCommand implements Command{
+package org.hbrs.ooka.commands;
+
+public class HelpCommand implements Command {
     @Override
     public void execute() {
         StringBuilder builder = new StringBuilder();

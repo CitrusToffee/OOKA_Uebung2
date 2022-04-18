@@ -1,6 +1,8 @@
+package org.hbrs.ooka.commands;
+
 import java.util.List;
 
-public class StopCompCommand implements Command{
+public class StopCompCommand implements Command {
 
     private List<String> componantNames;
 

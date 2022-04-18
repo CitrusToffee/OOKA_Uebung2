@@ -1,6 +1,8 @@
+package org.hbrs.ooka.commands;
+
 import java.util.List;
 
-public class RemoveCompCommand implements Command{
+public class RemoveCompCommand implements Command {
     private List<String> componantNames;
 
     public RemoveCompCommand(List<String> componantNames){

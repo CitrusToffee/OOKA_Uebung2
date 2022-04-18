@@ -1,4 +1,6 @@
-public class UnknownCommand implements Command{
+package org.hbrs.ooka.commands;
+
+public class UnknownCommand implements Command {
 
     private String command;
 
@@ -9,7 +11,7 @@ public class UnknownCommand implements Command{
 
     @Override
     public void execute() {
-        String res = String.format("Command \"%s\" is unknown",command);
+        String res = String.format("org.hbrs.ooka.commands.Command \"%s\" is unknown",command);
         System.out.println(res);
     }
 }

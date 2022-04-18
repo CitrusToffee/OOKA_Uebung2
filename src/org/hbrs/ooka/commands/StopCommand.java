@@ -1,3 +1,7 @@
+package org.hbrs.ooka.commands;
+
+import org.hbrs.ooka.StartDing;
+
 public class StopCommand implements Command {
 
 

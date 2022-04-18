@@ -54,7 +54,7 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-CLI: start</panel_attributes>
+org.hbrs.ooka.CLI: start</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
@@ -78,7 +78,7 @@ after calling the start Method</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-CLI: stop</panel_attributes>
+org.hbrs.ooka.CLI: stop</panel_attributes>
     <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>

@@ -1,3 +1,5 @@
+package org.hbrs.ooka;
+
 import java.util.HashMap;
 import java.util.Map;
 

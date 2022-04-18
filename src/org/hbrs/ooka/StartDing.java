@@ -1,3 +1,5 @@
+package org.hbrs.ooka;
+
 import java.util.Scanner;
 
 public class StartDing {
@@ -9,7 +11,7 @@ public class StartDing {
         Scanner in = new Scanner(System.in);
         CLI cli = new CLI(in);
         while(running){
-            // listen for CLI
+            // listen for Command line
             if (in.hasNextLine()){
                 cli.readCL();
             }

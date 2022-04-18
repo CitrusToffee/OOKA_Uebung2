@@ -1,8 +1,8 @@
+import org.hbrs.ooka.Component;
 import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
 
 public class TestComponent {
 
