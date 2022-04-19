@@ -1,13 +1,10 @@
 package org.hbrs.ooka;
 
-import org.hbrs.ooka.Annotations.start;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -23,7 +20,7 @@ public class Loader {
         Enumeration<JarEntry> e = jarFile.entries();
 
         URL[] urls = { new URL("jar:file:" + jarPath+"!/") };
-        URLClassLoader cl = URLClassLoader.newInstance(urls);
+        URLClassLoader cl = new URLClassLoader(urls);
         // runs and finds all classes that are found
         // TODO: do something with the classes (use annotations to find the start class of this jar)
         List<Class> classes = new ArrayList<>();

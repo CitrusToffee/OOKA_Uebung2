@@ -34,5 +34,8 @@ public class CLager {
         }
         return output.toString();
     }
+    public Component getComponent(int id){
+        return ComponentMap.get(id);
+    }
 
 }

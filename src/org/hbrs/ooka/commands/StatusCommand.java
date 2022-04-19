@@ -5,7 +5,8 @@ import org.hbrs.ooka.CLager;
 public class StatusCommand implements Command {
 
     public void execute(){
-        CLager.getInstance().printComponents();
+        System.out.println(CLager.getInstance().printComponents());
+
     }
 
 }

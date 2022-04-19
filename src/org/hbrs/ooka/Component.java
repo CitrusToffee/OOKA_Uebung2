@@ -1,5 +1,9 @@
 package org.hbrs.ooka;
 
+import org.hbrs.ooka.States.ReadyState;
+import org.hbrs.ooka.States.State;
+
+import java.lang.reflect.Method;
 import java.net.URLClassLoader;
 import java.util.Arrays;
 
@@ -10,8 +14,11 @@ public class Component {
     private Class<?> klasse;
     private int zustand;
     private URLClassLoader urlClassLoader;
+    private State zustand;
 
-    public Component(String name, Class<?> klasse, int zustand, URLClassLoader urlClassLoader) {
+    private Executor thread;
+
+    public Component(String name, Class<?> klasse, State zustand, URLClassLoader urlClassLoader) {
         this.id = IDTOTAL;
         IDTOTAL += 1;
         this.name = name;
@@ -21,7 +28,8 @@ public class Component {
     }
 
     public Component(String name, Class<?> klasse, URLClassLoader urlClassLoader) {
-        this(name, klasse, 0, urlClassLoader);
+        this(name, klasse, null, urlClassLoader);
+        this.zustand = new ReadyState(this);
     }
 
     public String getName() {
@@ -36,7 +44,7 @@ public class Component {
         return urlClassLoader;
     }
 
-    public int getZustand() {
+    public State getZustand() {
         return zustand;
     }
 
