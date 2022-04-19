@@ -14,16 +14,18 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class Loader {
+    /*
+    Annotationen need to have the RetentionPolicy Runtime
+     */
 
-    public static void loadComponent(String jarPath) throws ClassNotFoundException, IOException {
+    public static Component loadComponent(String jarPath) throws ClassNotFoundException, IOException {
         JarFile jarFile = new JarFile(jarPath);
         Enumeration<JarEntry> e = jarFile.entries();
 
         URL[] urls = { new URL("jar:file:" + jarPath+"!/") };
         URLClassLoader cl = URLClassLoader.newInstance(urls);
-
         // runs and finds all classes that are found
-        // TODO: do something with the classes (use annotations to find the org.hbrs.ooka.Annotations.start class of this jar)
+        // TODO: do something with the classes (use annotations to find the start class of this jar)
         List<Class> classes = new ArrayList<>();
         while (e.hasMoreElements()) {
             JarEntry je = e.nextElement();
@@ -42,22 +44,26 @@ public class Loader {
 
         for (Class c: classes) {
             System.out.println(c.getSimpleName());
-            System.out.println(Arrays.toString(c.getDeclaredMethods()));
-            System.out.println(isClass(c));
-            System.out.println(Arrays.toString(c.getDeclaredAnnotations()));
-
+            boolean containsStart = false, containsStop = false;
             for (Method m : c.getDeclaredMethods()){
-                System.out.println("--------------------");
-                System.out.println(m.getName());
-                System.out.println(m.getAnnotation(start.class));
-                System.out.println(Arrays.toString(m.getDeclaredAnnotations()));
+                if (isAnnotated(m)){
+                    if (isEquals(m,"@start()")){
+                        containsStart = true;
+                    } else if (isEquals(m,"@stop()")) {
+                        containsStop = true;
+                    }
 
-                System.out.println(m.isAnnotationPresent(start.class));
+                }
+
+            }
+            if (containsStart && containsStop){
+                System.out.println("Class " + c.toString() + " ist die Startklasse.");
+                return new Component(jarPath,c,cl);
             }
 
         }
 
-        Component component = new Component(jarPath,null,cl);
+        throw new ClassNotFoundException("Die gesuchte Startklasse wurde nicht in der Componente gefunden.");
 
     }
 
@@ -72,7 +78,13 @@ public class Loader {
             return true;
         }
 
-
     }
 
+    public static boolean isAnnotated(Method method){
+        return method.getDeclaredAnnotations().length > 0;
+    }
+
+    public static boolean isEquals(Method method, String anno){
+        return (method.getDeclaredAnnotations()[0]).toString().equals(anno);
+    }
 }
