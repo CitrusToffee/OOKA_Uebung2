@@ -1,5 +1,6 @@
 package org.hbrs.ooka;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -12,14 +13,16 @@ import java.util.jar.JarFile;
 
 public class Loader {
     /*
-    Annotationen need to have the RetentionPolicy Runtime
+     *Annotationen need to have the RetentionPolicy Runtime
      */
 
     public static Component loadComponent(String jarPath) throws ClassNotFoundException, IOException {
-        JarFile jarFile = new JarFile(jarPath);
+        String realJarPath =  "lib"+File.separator+jarPath;
+        System.out.println(realJarPath);
+        JarFile jarFile = new JarFile(realJarPath);
         Enumeration<JarEntry> e = jarFile.entries();
 
-        URL[] urls = { new URL("jar:file:" + jarPath+"!/") };
+        URL[] urls = { new URL("jar:file:"+ realJarPath+"!/") };
         URLClassLoader cl = new URLClassLoader(urls);
         // runs and finds all classes that are found
         // TODO: do something with the classes (use annotations to find the start class of this jar)
@@ -44,9 +47,9 @@ public class Loader {
             boolean containsStart = false, containsStop = false;
             for (Method m : c.getDeclaredMethods()){
                 if (isAnnotated(m)){
-                    if (isEquals(m,"@start()")){
+                    if (hasMethodThatAnnotation(m,"@start()")){
                         containsStart = true;
-                    } else if (isEquals(m,"@stop()")) {
+                    } else if (hasMethodThatAnnotation(m,"@stop()")) {
                         containsStop = true;
                     }
 
@@ -81,7 +84,7 @@ public class Loader {
         return method.getDeclaredAnnotations().length > 0;
     }
 
-    public static boolean isEquals(Method method, String anno){
+    public static boolean hasMethodThatAnnotation(Method method, String anno){
         return (method.getDeclaredAnnotations()[0]).toString().equals(anno);
     }
 }

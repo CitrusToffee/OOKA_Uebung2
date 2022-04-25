@@ -4,8 +4,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>480</x>
-      <y>200</y>
+      <x>270</x>
+      <y>190</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>790</x>
-      <y>200</y>
+      <x>580</x>
+      <y>190</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>790</x>
-      <y>370</y>
+      <x>580</x>
+      <y>360</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>480</x>
-      <y>370</y>
+      <x>270</x>
+      <y>360</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -48,8 +48,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>200</y>
+      <x>360</x>
+      <y>190</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -60,8 +60,8 @@ CLI: start</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>230</y>
+      <x>620</x>
+      <y>220</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -72,8 +72,8 @@ after calling the start Method</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>370</y>
+      <x>360</x>
+      <y>360</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -84,8 +84,8 @@ CLI: stop</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>230</y>
+      <x>310</x>
+      <y>220</y>
       <w>200</w>
       <h>160</h>
     </coordinates>
