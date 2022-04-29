@@ -93,4 +93,51 @@ CLI: stop</panel_attributes>
 after calling the stop Method</panel_attributes>
     <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>310</x>
+      <y>100</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>50</x>
+      <y>200</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>110</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+after adding the Component</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>190</y>
+      <w>230</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+after removing the Component
+</panel_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
 </diagram>
