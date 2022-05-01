@@ -1,0 +1,4 @@
+Wir (Joshua Woll und Andreas Dietrich) haben die Aufgabe in ein Git-Repo hochgeladen:
+https://github.com/CitrusToffee/OOKA_Uebung2
+
+Dort finden sie auch in /docs die Antwort zu den Fragen sowie die Diagramme in /Pictures.
