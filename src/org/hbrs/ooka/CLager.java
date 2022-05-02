@@ -28,7 +28,7 @@ public class CLager {
     }
 
     public String printComponents() {
-        StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder().append("Available Components: \n");
         for (Component component: ComponentMap.values()) {
             output.append(component.toString()).append("\n");
         }

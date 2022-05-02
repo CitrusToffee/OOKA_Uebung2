@@ -11,8 +11,7 @@ public class Component {
     public static int IDTOTAL = 0;
     private int id;
     private String name;
-    private Class<?> klasse;
-    private int zustand;
+    private Class<?> klasse; // Startklasse
     private URLClassLoader urlClassLoader;
     private State zustand;
 
@@ -48,15 +47,15 @@ public class Component {
         return zustand;
     }
 
-    public void setZustand(int zustand) {
+    public void setZustand(State zustand) {
         this.zustand = zustand;
     }
 
     public String toString() {
         String resUrlCL ="URLs:"+ Arrays.toString(urlClassLoader.getURLs());
         StringBuilder result = new StringBuilder();
-        result.append("name=").append(name).append(" ,klasse=").append(klasse).append(" ,zustand=")
-                .append(zustand).append(" ,URLClassLoader=").append(resUrlCL);
+        result.append("id=").append(id).append(" ,name=").append(name).append(" ,Klasse=").append(klasse)
+                .append(" ,Zustand=").append(zustand).append(" ,URLClassLoader=").append(resUrlCL);
         return result.toString();
     }
 
@@ -64,5 +63,32 @@ public class Component {
         return id;
     }
 
+    public Method getStartMethod(){
+        return getMethodWithAnnotation("@start()");
+    }
+
+    public Method getStopMethod(){
+        return getMethodWithAnnotation("@stop()");
+    }
+
+    public Method getMethodWithAnnotation(String anno){
+        for (Method method: klasse.getDeclaredMethods()) {
+            if (Loader.isAnnotated(method)){
+                if (Loader.hasMethodThatAnnotation(method,anno)){
+                    return method;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    public Executor getThread() {
+        return thread;
+    }
+
+    public void setThread(Executor thread) {
+        this.thread = thread;
+    }
 
 }
