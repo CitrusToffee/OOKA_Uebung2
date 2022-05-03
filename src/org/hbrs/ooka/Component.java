@@ -1,11 +1,18 @@
 package org.hbrs.ooka;
 
+import com.google.gson.JsonObject;
 import org.hbrs.ooka.States.ReadyState;
 import org.hbrs.ooka.States.State;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URLClassLoader;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Component {
     public static int IDTOTAL = 0;
@@ -14,22 +21,26 @@ public class Component {
     private Class<?> klasse; // Startklasse
     private URLClassLoader urlClassLoader;
     private State zustand;
+    private List<Field> InjectingFields;
 
     private Executor thread;
 
-    public Component(String name, Class<?> klasse, State zustand, URLClassLoader urlClassLoader) {
+    public Component(String name, Class<?> klasse, State zustand, URLClassLoader urlClassLoader, List<Field> injectingFields) {
         this.id = IDTOTAL;
         IDTOTAL += 1;
         this.name = name;
         this.klasse = klasse;
         this.zustand = zustand;
         this.urlClassLoader = urlClassLoader;
+        this.InjectingFields = injectingFields;
     }
 
-    public Component(String name, Class<?> klasse, URLClassLoader urlClassLoader) {
-        this(name, klasse, null, urlClassLoader);
+    public Component(String name, Class<?> klasse, URLClassLoader urlClassLoader, List<Field> injectingFields) {
+        this(name, klasse, null, urlClassLoader, injectingFields);
         this.zustand = new ReadyState(this);
     }
+
+
 
     public String getName() {
         return name;
@@ -45,6 +56,10 @@ public class Component {
 
     public State getZustand() {
         return zustand;
+    }
+
+    public List<Field> getInjectingFields() {
+        return InjectingFields;
     }
 
     public void setZustand(State zustand) {
@@ -89,6 +104,32 @@ public class Component {
 
     public void setThread(Executor thread) {
         this.thread = thread;
+    }
+
+    public Map<String,Object> getConfAsMap(){
+        Map<String,Object> comp = new HashMap<>();
+
+        String[] splittedString = (urlClassLoader.getURLs()[0]).getPath().split(File.separator);
+        String jsonUrl = splittedString[splittedString.length-1];
+        comp.put("pathToComp",jsonUrl.substring(0,jsonUrl.length()-1));
+
+        comp.put("zustand",zustand.toString());
+        return comp;
+    }
+
+    public static Component getCompFromJson(JsonObject jsonComp){
+        String jsonState = jsonComp.get("zustand").getAsString();
+
+        String jsonUrl = jsonComp.get("pathToComp").getAsString();
+        try{
+            Component component = Loader.loadComponent(jsonUrl);
+            component.setZustand(State.getState(jsonState,component));
+            return component;
+        }catch(ClassNotFoundException | IOException ex){
+            ex.printStackTrace();
+        }
+
+        return null;
     }
 
 }

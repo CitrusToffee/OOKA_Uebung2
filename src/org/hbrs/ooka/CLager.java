@@ -38,4 +38,12 @@ public class CLager {
         return ComponentMap.get(id);
     }
 
+    public Map<String,Object> getComponentsAsMap(){
+        Map<String,Object> comps = new HashMap<>();
+        for (Component comp: ComponentMap.values()){
+            comps.put(Integer.toString(comp.getId()),comp.getConfAsMap());
+        }
+        return comps;
+    }
+
 }

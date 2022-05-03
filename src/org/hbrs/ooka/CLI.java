@@ -52,9 +52,16 @@ public class CLI {
             case "help":
                 command= new HelpCommand();
                 break;
+            case "pers":
+                command = new PersistenzCommand();
+                break;
+            case "load":
+                command = new LoadCommand();
+                break;
             default:
                 command = new UnknownCommand(input);
                 break;
+
         }
         actions.add(command);
         command.execute();

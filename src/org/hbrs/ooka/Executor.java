@@ -15,6 +15,7 @@ public class Executor extends Thread{
     public void run(){
         try {
             var obj = component.getKlasse().getConstructor().newInstance();
+            Loader.injectObjects(component,obj, component.getInjectingFields());
             Method startMethod = component.getStartMethod();
             startMethod.invoke(obj);
 

@@ -1,7 +1,11 @@
 package org.hbrs.ooka;
 
+import org.hbrs.ooka.Annotations.Inject;
+
 import java.io.File;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -56,9 +60,16 @@ public class Loader {
                 }
 
             }
+            List<Field> injectingFields = new ArrayList<>();
+            for (Field f : c.getFields()) {
+                if (hasFieldThatAnnotation(f, "@Inject()")) {
+                    injectingFields.add(f);
+                }
+            }
+
             if (containsStart && containsStop){
                 System.out.println("Class " + c.toString() + " ist die Startklasse.");
-                return new Component(jarPath,c,cl);
+                return new Component(jarPath,c,cl,injectingFields);
             }
 
         }
@@ -80,11 +91,67 @@ public class Loader {
 
     }
 
+    public static void injectObjects(Component comp, Object obj, List<Field> fields) {
+        for(Field declaredField: fields) {
+
+            try {
+
+
+                boolean accessible = declaredField.canAccess(obj);
+
+                declaredField.setAccessible(true);
+
+                //String prefix = declaredField.getAnnotation(Inject.class).Prefix();
+                //create Logger
+                Logger LOG = new Logger(comp);
+                declaredField.set(obj, LOG);
+
+                declaredField.setAccessible(accessible);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public static boolean isAnnotated(Method method){
         return method.getDeclaredAnnotations().length > 0;
     }
 
     public static boolean hasMethodThatAnnotation(Method method, String anno){
-        return (method.getDeclaredAnnotations()[0]).toString().equals(anno);
+        for (Annotation anon: method.getDeclaredAnnotations()){
+            if (anon.toString().equals(anno)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasFieldThatAnnotation(Field field, String anno){
+        for (Annotation anon: field.getDeclaredAnnotations()){
+            if (anon.toString().equals(anno)){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public static URLClassLoader getClassLoader(String pathToJar){
+        try{
+            URL[] urls = { new URL(pathToJar) };
+            return new URLClassLoader(urls);
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Class getStartClass(URLClassLoader cl,String className){
+        try{
+            return cl.loadClass(className);
+        }catch(ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 }
