@@ -1,4 +1,6 @@
 Wir (Joshua Woll und Andreas Dietrich) haben die Aufgabe in ein Git-Repo hochgeladen:
 https://github.com/CitrusToffee/OOKA_Uebung2
 
+Die Lösung für das Übungsblatt 3 finden sie unter dem Branch "Uebungsblatt_3".
+
 Dort finden sie auch in /docs die Antwort zu den Fragen sowie die Diagramme in /Pictures.
