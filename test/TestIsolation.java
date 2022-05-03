@@ -14,6 +14,7 @@ public class TestIsolation {
         Component component1 = loadTestJar();
         Component component2 = loadTestJar();
 
+        assertNotEquals(component1.getUrlClassLoader(),component2.getUrlClassLoader());
         assertNotEquals(component1.getKlasse(),component2.getKlasse());
         assertNotEquals(component1.getStartMethod(),component2.getStartMethod());
 
