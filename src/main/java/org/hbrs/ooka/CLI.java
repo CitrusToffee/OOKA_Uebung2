@@ -1,5 +1,6 @@
 package org.hbrs.ooka;
 
+
 import org.hbrs.ooka.commands.*;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CLI {
-    private List<Command> actions;
+
+    private List<Command>  actions;
     private Scanner in;
     public CLI(Scanner in){
         this.in=in;

@@ -2,6 +2,7 @@ package org.hbrs.ooka.commands;
 
 import org.hbrs.ooka.CLager;
 import org.hbrs.ooka.Component;
+import org.hbrs.ooka.PersistentManager;
 import org.hbrs.ooka.ThreadManager;
 
 import java.lang.reflect.InvocationTargetException;
@@ -30,6 +31,7 @@ public class StartCompCommand implements Command {
             //retriving component and the main class
             ThreadManager.startComponent(cId);
         }
+        PersistentManager.saveAsJson();
 
     }
 }

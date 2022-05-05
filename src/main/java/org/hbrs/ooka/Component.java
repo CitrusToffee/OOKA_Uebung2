@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.hbrs.ooka.States.ReadyState;
 import org.hbrs.ooka.States.State;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -79,11 +80,11 @@ public class Component {
     }
 
     public Method getStartMethod(){
-        return getMethodWithAnnotation("@start()");
+        return getMethodWithAnnotation(".start()");
     }
 
     public Method getStopMethod(){
-        return getMethodWithAnnotation("@stop()");
+        return getMethodWithAnnotation(".stop()");
     }
 
     public Method getMethodWithAnnotation(String anno){
@@ -108,9 +109,8 @@ public class Component {
 
     public Map<String,Object> getConfAsMap(){
         Map<String,Object> comp = new HashMap<>();
-
-        String[] splittedString = (urlClassLoader.getURLs()[0]).getPath().split(File.separator);
-        String jsonUrl = splittedString[splittedString.length-1];
+        String tmp= (urlClassLoader.getURLs()[0]).getPath();
+        String jsonUrl = tmp.substring(9,tmp.length()-2);
         comp.put("pathToComp",jsonUrl.substring(0,jsonUrl.length()-1));
 
         comp.put("zustand",zustand.toString());

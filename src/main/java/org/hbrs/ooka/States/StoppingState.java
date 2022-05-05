@@ -1,7 +1,7 @@
 package org.hbrs.ooka.States;
 import org.hbrs.ooka.Component;
 
-public class StoppingState implements State{
+public class StoppingState implements State {
 
     private Component context;
     private final static String name = "Stopping";

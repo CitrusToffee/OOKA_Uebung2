@@ -1,6 +1,8 @@
 package org.hbrs.ooka;
 
 import org.hbrs.ooka.Annotations.Inject;
+import org.hbrs.ooka.Annotations.start;
+import org.hbrs.ooka.Annotations.stop;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -51,24 +54,28 @@ public class Loader {
             boolean containsStart = false, containsStop = false;
             for (Method m : c.getDeclaredMethods()){
                 if (isAnnotated(m)){
-                    if (hasMethodThatAnnotation(m,"@start()")){
+                    if (m.isAnnotationPresent(start.class)){
                         containsStart = true;
-                    } else if (hasMethodThatAnnotation(m,"@stop()")) {
+                    } else if (m.isAnnotationPresent(stop.class)) {
                         containsStop = true;
                     }
 
                 }
 
             }
-            List<Field> injectingFields = new ArrayList<>();
-            for (Field f : c.getFields()) {
-                if (hasFieldThatAnnotation(f, "@Inject()")) {
-                    injectingFields.add(f);
-                }
-            }
+
 
             if (containsStart && containsStop){
                 System.out.println("Class " + c.toString() + " ist die Startklasse.");
+
+                List<Field> injectingFields = new ArrayList<>();
+                for (Field f : c.getDeclaredFields()) {
+
+                    if (f.isAnnotationPresent(Inject.class)) {
+                        injectingFields.add(f);
+                    }
+                }
+
                 return new Component(jarPath,c,cl,injectingFields);
             }
 
@@ -95,15 +102,14 @@ public class Loader {
         for(Field declaredField: fields) {
 
             try {
-
-
                 boolean accessible = declaredField.canAccess(obj);
-
                 declaredField.setAccessible(true);
 
-                //String prefix = declaredField.getAnnotation(Inject.class).Prefix();
+                // getting @Inject Annotation Informations
+                String prefix = declaredField.getAnnotation(Inject.class).Prefix();
+
                 //create Logger
-                Logger LOG = new Logger(comp);
+                ILogger LOG = LoggerFactory.createLogger(prefix);
                 declaredField.set(obj, LOG);
 
                 declaredField.setAccessible(accessible);
@@ -119,7 +125,7 @@ public class Loader {
 
     public static boolean hasMethodThatAnnotation(Method method, String anno){
         for (Annotation anon: method.getDeclaredAnnotations()){
-            if (anon.toString().equals(anno)){
+            if (anon.toString().endsWith(anno)){
                 return true;
             }
         }
@@ -128,7 +134,7 @@ public class Loader {
 
     public static boolean hasFieldThatAnnotation(Field field, String anno){
         for (Annotation anon: field.getDeclaredAnnotations()){
-            if (anon.toString().equals(anno)){
+            if (anon.toString().endsWith(anno)){
                 return true;
             }
         }

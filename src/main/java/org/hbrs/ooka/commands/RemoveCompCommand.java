@@ -2,6 +2,7 @@ package org.hbrs.ooka.commands;
 
 import org.hbrs.ooka.CLager;
 import org.hbrs.ooka.Component;
+import org.hbrs.ooka.PersistentManager;
 import org.hbrs.ooka.ThreadManager;
 
 import java.util.ArrayList;
@@ -33,5 +34,6 @@ public class RemoveCompCommand implements Command {
                 System.out.println("Component isn't in state ready and therefor cannot be removed.");
             }
         }
+        PersistentManager.saveAsJson();
     }
 }

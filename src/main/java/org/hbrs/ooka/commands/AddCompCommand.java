@@ -27,6 +27,7 @@ public class AddCompCommand implements Command {
                 Component component = Loader.loadComponent(componantName);
                 cLager.addComponent(component);
             } catch (ClassNotFoundException e) {
+                e.printStackTrace();
                 System.out.println("Komponente "+ componantName+ " existiert nicht oder konnte nicht gefunden werden.");
             } catch (IOException e) {
                 System.out.println(Arrays.toString(e.getStackTrace()));
