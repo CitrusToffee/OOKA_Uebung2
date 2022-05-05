@@ -2,6 +2,7 @@ package org.hbrs.ooka.commands;
 
 import org.hbrs.ooka.CLager;
 import org.hbrs.ooka.Component;
+import org.hbrs.ooka.PersistentManager;
 import org.hbrs.ooka.ThreadManager;
 
 import java.lang.reflect.InvocationTargetException;
@@ -41,5 +42,6 @@ public class StopCompCommand implements Command {
 
 
         }
+        PersistentManager.saveAsJson();
     }
 }
