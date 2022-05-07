@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>900</x>
+      <y>250</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+_: DB Server_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>590</x>
+      <y>260</y>
+      <w>120</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;workstation&gt;&gt;
+PC</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>300</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+Datenpersistierung</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>500</x>
+      <y>500</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+EigeneLZU.jar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>360</y>
+      <w>90</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;deploy&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>290</x>
+      <y>370</y>
+      <w>170</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+ComponentJars</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>310</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;deploy&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>
