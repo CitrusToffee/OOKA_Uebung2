@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>550</x>
+      <y>330</y>
+      <w>110</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;workstation&gt;&gt;
+*PC*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>990</x>
+      <y>330</y>
+      <w>110</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+_: DB Server_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>280</x>
+      <y>500</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Component</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>600</x>
+      <y>600</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Component</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>410</y>
+      <w>170</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;deploy&gt;&gt;</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>410</y>
+      <w>120</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;deploy&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>330</y>
+      <w>370</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Datenpersistierung</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+</diagram>
